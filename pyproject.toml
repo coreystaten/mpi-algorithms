@@ -1,0 +1,5 @@
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint.pycodestyle]
+max-doc-length = 120

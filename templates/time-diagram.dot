@@ -1,0 +1,24 @@
+digraph G {{ '{' }}
+    node [shape=circle, width=0.2, fixedsize=true];
+    rankdir=TB; // Top-to-bottom direction
+    layout=neato; // Use neato for manual positioning
+
+    // Invisible node for the time arrow
+    time [shape=none, label="", xlabel="time", labelloc="t", width=0, height=0, pos="-1,0!"];
+    time_end [shape=none, label="", width=0, height=0, pos="-1,{{min_y}}!"]
+    // Define the arrow representing time
+    time -> time_end [penwidth=2, color=black, constraint=false];
+
+    {% for node in nodes %}
+    P{{node.rank}}_T{{ -node.y}} [pos="{{node.rank}},{{node.y}}!", label=""{% if node.first_row %}, xlabel="P{{node.rank}}", labelloc="t"{% endif %}]
+    {% endfor %}
+
+
+    {% for edge in send_arrows %}
+    P{{edge.source_rank}}_T{{ -edge.start_y}} -> P{{edge.target_rank}}_T{{ -edge.end_y}} [constraint=false];
+    {% endfor %}
+
+    {% for node_group in node_groups.values() %}
+    {{ '{' }} rank=same; {% for node in node_group %}{{ 'P%s_T%s' % (node.rank, -node.y) }}{% if not loop.last %}; {% endif %}{% endfor %} {{ '}' }}
+    {% endfor %}
+{{ '}' }}
