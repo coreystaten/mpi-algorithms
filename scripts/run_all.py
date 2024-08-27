@@ -27,7 +27,6 @@ def parse_args() -> Namespace:
     parser.add_argument("--diagram-world-size", type=int, default=8)
     parser.add_argument("--roundtrip-ms", type=float, default=1)
     parser.add_argument("--throughput-bytes-ms", type=float, default=1)
-    # parser.add_argument("--tensor-size", type=int, default=1)
     parser.add_argument("--disable-diagrams", action="store_true")
     return parser.parse_args()
 
