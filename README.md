@@ -2,7 +2,7 @@
 
 This repo contains simplified implementations of various MPI algorithms in Python, along with visualizations and a simulated network timer.  These implementations are for educational purposes only.
 
-This implementation isn't designed for production use.  The provided `Communicator` is designed to work with multiple Python threads in a single process.
+This code isn't designed for production use.  The provided `Communicator` is designed to work with multiple Python threads in a single process.
 
 
 ## Why?
