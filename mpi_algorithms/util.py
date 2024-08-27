@@ -1,5 +1,6 @@
 import queue
 import threading
+import time
 from typing import Any, Callable, List, Optional, TypeGuard, TypeVar
 
 T = TypeVar("T")
@@ -35,4 +36,5 @@ def run_threads(functions: List[Callable[..., Any]], args: List[Any]) -> List[An
             raise exc_queue.get()
         if all(not t.is_alive() for t in threads):
             break
+        time.sleep(0.1)
     return results
